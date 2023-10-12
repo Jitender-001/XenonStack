@@ -1,0 +1,37 @@
+.TH INTERNSCTL "October 2023" "Version 0.1.0" "internsctl man page"
+
+.SH NAME
+internsctl \- control and manage interns' activities.
+
+.SH SYNOPSIS
+internsctl [OPTIONS] [COMMAND]
+
+.SH DESCRIPTION
+internsctl is a command-line tool for managing and controlling intern-related activities within an organization.
+
+.SH OPTIONS
+\-\-help
+Show help message and exit.
+\-\-version
+Show current version of internsctl
+
+.SH file getinfo [options] <file-name>
+\-\-size, \-s
+show the size of file
+\-\-permissions, \-p
+show file permissions
+\-\-owner, \-o
+show file owner
+\-\-last\-modified, \-m
+show the last modified time of the file
+
+.SH COMMANDS
+ internsctl --help
+ internsctl --version
+ internsctl cpu getinfo
+ internsctl memory getinfo
+ internsctl user create <username>
+ internsctl user list
+ internsctl user list --sudo-only
+ internsctl file getinfo <file-name>
+ internsctl file getinfo [options] <file-name>

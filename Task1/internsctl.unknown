@@ -1,0 +1,70 @@
+#!/bin/bash
+
+if [ "$1" == "--help" ]
+then
+    echo "--version: shows version of the intersctl"
+    echo "--cpu: get info about the file"
+    echo "--memory: get info about the command how much memory it's taking"
+fi
+
+if [ "$1" == "--version" ]
+then
+   echo "v0.1.0"
+fi
+
+if [ "$1" == "cpu" ] && [ "$2" == "getinfo" ]
+then
+    echo lscpu
+fi
+
+if [ "$1" == "memory" ] && [ "$2" == "getinfo" ]
+then
+    echo free
+fi
+
+username="$3"
+if [ "$1" == "user" ] && [ "$2" == "create" ]
+then  
+  sudo useradd $username 
+  sudo passwd $username
+  echo "User $username created successfully"
+fi
+
+if [ "$1" == "user" ] && [ "$2" == "list" ] && [ "$3" == "--sudo-only" ]
+then
+  getent group sudo || getent group wheel | cut -d: -f4 | tr ',' '\n'
+elif [ "$1" == "user" ] && [ "$2" == "list" ]
+then
+  getent passwd | grep -E ':[0-9]{4,5}:' | cut -d: -f1
+
+fi
+
+if [ "$1" == "file" ] && [ "$2" == "getinfo" ] && [ "$3" > 0 ]
+then
+  filename="$4"
+  option="$3"
+  if [ "$option" == "--size" ] || [ "$option" == "-s" ]
+  then 
+    echo "ls -l "$filename" | cut -d ' ' -f 5"
+  elif [ "$option" == "--permissions" ] || [ "$option" == "-p" ]
+  then 
+    echo "ls -l "$filename" | cut -d ' ' -f 1" 
+  elif [ "$option" == "--owner" ] || [ "$option" == "-o" ]
+  then
+    echo "ls -l "$filename" | awk '{print $3}'"
+  elif [ "$option" == "--last-modified" ] || [ "$option" == "-m" ]
+  then
+    echo "stat -c "%y" "$filename""
+  else 
+    echo "invalid option refer manual"
+  fi
+
+elif [ "$1" == "file" ] && [ "$2" == "getinfo" ]
+then
+  filename="$3"
+  echo "File: $filename"
+  echo "Access: ls -l "$filename" | cut -d ' ' -f 1"
+  echo "Size(B): ls -l "$filename" | cut -d ' ' -f 5"
+  echo "Owner: ls -l "$filename" | awk '{print $3}'"
+  echo "Modify: stat -c "%y" "$filename""
+fi
