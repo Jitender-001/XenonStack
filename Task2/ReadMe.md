@@ -9,8 +9,6 @@ Welcome to the Education Website project! This project is a simple website desig
 - [Project Structure](#project-structure)
 - [Database Setup](#database-setup)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Project Overview
 This project is a basic educational website that provides a user registration form. Users can register by providing their email and password, and this information is stored in a MySQL database. The project uses HTML for the user interface, CSS for styling, and JavaScript to handle form submission and database interactions.
@@ -25,14 +23,14 @@ Before you get started with this project, make sure you have the following prere
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/education-website.git
+   git clone https://github.com/Jitender-001/XenonStack/tree/main/Task2
    ```
 
 2. Open the project folder in your code editor.
 
 3. Configure the database settings:
    - Create a MySQL database for this project.
-   - Update the `config.js` file with your database configuration. Provide the host, user, password, and database name.
+   - Update the `database.js` file with your database configuration. Provide the host, user, password, and database name.
 
 4. Open the `index.html` file in your web browser to access the registration form.
 
@@ -52,12 +50,11 @@ education-website/
 
 - `index.html`: The HTML file that contains the user registration form.
 - `styles/style.css`: The CSS file for styling the registration form.
-- `scripts/script.js`: The JavaScript file for handling form submission and interacting with the database.
-- `config.js`: Configuration file for connecting to the MySQL database.
+- `database.js`: The JavaScript file for handling form submission and interacting with the database.
 
 ## Database Setup
 1. Create a MySQL database for the project.
-2. Update the `config.js` file with your database configuration. Example:
+2. Update the `database.js` file with your database configuration. Example:
 
    ```javascript
    module.exports = {
@@ -76,10 +73,3 @@ education-website/
 3. Click the "Register" button to submit the form.
 4. The data will be stored in the MySQL database.
 
-## Contributing
-If you would like to contribute to this project, please follow the standard GitHub fork and pull request workflow.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-Thank you for using the Education Website project! If you encounter any issues or have suggestions for improvements, feel free to create an issue or pull request.
